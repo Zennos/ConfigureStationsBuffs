@@ -1,1 +1,1 @@
-Longer Stations Buffs is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Increase the duration of buffs from stations (eg. Sharpening Stations, Crystal Ball, etc.)
