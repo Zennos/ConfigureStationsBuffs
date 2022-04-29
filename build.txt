@@ -1,0 +1,3 @@
+displayName = Longer Stations Buffs
+author = Edoan
+version = 0.1
