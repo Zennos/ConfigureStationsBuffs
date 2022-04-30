@@ -1,1 +1,5 @@
-Increase the duration of buffs from stations (eg. Sharpening Stations, Crystal Ball, etc.)
+[i:2999] [i:2177] [i:487] [i:3198] [i:3750]
+Change duration of all vanilla stations to 2 hours!
+Duration of each station is configurable.
+
+GitHub: https://github.com/Zennos/LongerStationsBuffs
