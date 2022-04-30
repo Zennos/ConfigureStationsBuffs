@@ -1,3 +1,4 @@
 displayName = Longer Stations Buffs
 author = Edoan
 version = 1.0
+homepage = https://github.com/Zennos/LongerStationsBuffs
