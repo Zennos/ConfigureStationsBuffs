@@ -1,0 +1,10 @@
+
+Change duration of all vanilla stations to 2 hours!
+Duration of each station is configurable.
+
+[b]v2.0.0[/b]
+- added support for Terraria 1.4.4.
+
+Note: In 1.4.4 all stations (except Slice of Cake) has infinite duration. You can still use this mod to get extra duration for Slice of Cake.
+
+GitHub: https://github.com/Zennos/LongerStationsBuffs
