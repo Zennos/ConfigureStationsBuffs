@@ -1,18 +1,21 @@
 ﻿using System.ComponentModel;
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader.Config;
 
 namespace LongerStationsBuffs
 {
     public class LongerStationsBuffsConfig : ModConfig
     {
-		[Label("Mod active")]
+
 		[DefaultValue(true)]
 		public bool ModEnabled;
 
-		[Label("Duration of all buff stations")]
+		const string InterpolatedTooltip = "$Mods.LongerStationsBuffs.Configs.InMinuteTooltip";
+
+        [TooltipKey(InterpolatedTooltip)]
+		[TooltipArgs("120 (2h)")]
 		[Range(0, 59940)]
-		[Tooltip("In minutes. Default: 120 (2h)")]
 		[DefaultValue(120)]
 		public int BuffDuration;
 
@@ -24,46 +27,44 @@ namespace LongerStationsBuffs
 		{
 			if (!LongerStationsBuffs.IsPlayerLocalServerOwner(Main.player[whoAmI]))
 			{
-				message = "Only the server owner can change this config";
+				message = Language.GetTextValue("Mods.LongerStationsBuffs.Configs.OnlyOwner");
 				return false;
 			}
 			return base.AcceptClientChanges(pendingConfig, whoAmI, ref message);
 		}
 
 		[BackgroundColor(85, 107, 47, 255)]
-		[Label("Custom Duration For Each Station Instead: ")]
 		public class CustomBuffsDurations
 		{
-			[Label("Enabled")]
 			public bool enabled;
 
-			[Label("[i:2999] Bewitching Table")]
-			[Range(0, 59940)]
-			[Tooltip("In minutes. Default: 10")]
+            [TooltipKey(InterpolatedTooltip)]
+            [TooltipArgs(10)]
+            [Range(0, 59940)]
 			[DefaultValue(10)]
 			public int BewitchingTable;
 
-			[Label("[i:2177] Ammo Box")]
-			[Range(0, 59940)]
-			[Tooltip("In minutes. Default: 10")]
+            [TooltipKey(InterpolatedTooltip)]
+            [TooltipArgs(10)]
+            [Range(0, 59940)]
 			[DefaultValue(10)]
 			public int AmmoBox;
 
-			[Label("[i:487] Crystal Ball")]
-			[Range(0, 59940)]
-			[Tooltip("In minutes. Default: 10")]
+            [TooltipKey(InterpolatedTooltip)]
+            [TooltipArgs(10)]
+            [Range(0, 59940)]
 			[DefaultValue(10)]
 			public int CrystalBall;
 
-			[Label("[i:3198] Sharpening Station")]
-			[Range(0, 59940)]
-			[Tooltip("In minutes. Default: 10")]
+            [TooltipKey(InterpolatedTooltip)]
+            [TooltipArgs(10)]
+            [Range(0, 59940)]
 			[DefaultValue(10)]
 			public int SharpeningStation;
 
-			[Label("[i:3750] Slice of Cake")]
-			[Range(0, 59940)]
-			[Tooltip("In minutes. Default: 2")]
+            [TooltipKey(InterpolatedTooltip)]
+            [TooltipArgs(2)]
+            [Range(0, 59940)]
 			[DefaultValue(2)]
 			public int SliceOfCake;
 
@@ -79,7 +80,9 @@ namespace LongerStationsBuffs
 
 			public override string ToString()
 			{
-				return enabled ? "Enabled" : "Disabled";
+				return enabled ? 
+					Language.GetTextValue("GameUI.Enabled") : 
+					Language.GetTextValue("GameUI.Disabled");
 			}
 
 			public override bool Equals(object obj)

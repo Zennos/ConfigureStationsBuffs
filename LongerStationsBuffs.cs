@@ -7,10 +7,10 @@ namespace LongerStationsBuffs
 	{
 		public override void Load()
 		{
-			On.Terraria.Player.AddBuff += Player_AddBuff;
+			Terraria.On_Player.AddBuff += Player_AddBuff;
 		}
 
-        private void Player_AddBuff(On.Terraria.Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
+        private void Player_AddBuff(Terraria.On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
 		{
 			LongerStationsBuffsConfig modConfig = ModContent.GetInstance<LongerStationsBuffsConfig>();
 			if (modConfig.ModEnabled)

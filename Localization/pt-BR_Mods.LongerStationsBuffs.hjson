@@ -1,0 +1,59 @@
+Configs: {
+	OnlyOwner: Apenas o dono do servidor pode alterar essas configurações
+	InMinuteTooltip: Em minutos. Padrão: {0}
+
+	LongerStationsBuffsConfig: {
+		DisplayName: Longer Stations Buffs Configurações
+
+		ModEnabled: {
+			Label: Mod Ativado
+			Tooltip: ""
+		}
+
+		BuffDuration: {
+			Label: Duração de todas as estantes de buff
+			Tooltip: ""
+		}
+
+		customBuffDuration: {
+			Label: Duração personalizada para cada estante
+			Tooltip: ""
+		}
+
+		// a.Tooltip: ""
+	}
+
+	CustomBuffsDurations: {
+		Tooltip: ""
+
+		enabled: {
+			Label: "{$GameUI.Enabled}"
+			Tooltip: ""
+		}
+
+		BewitchingTable: {
+			Label: "[i:2999] {$ItemName.BewitchingTable}"
+			Tooltip: ""
+		}
+
+		AmmoBox: {
+			Label: "[i:2177] {$ItemName.AmmoBox}"
+			Tooltip: ""
+		}
+
+		CrystalBall: {
+			Label: "[i:487] {$ItemName.CrystalBall}"
+			Tooltip: ""
+		}
+
+		SharpeningStation: {
+			Label: "[i:3198] {$ItemName.SharpeningStation}"
+			Tooltip: ""
+		}
+
+		SliceOfCake: {
+			Label: "[i:3750] {$ItemName.SliceOfCake}"
+			Tooltip: ""
+		}
+	}
+}
