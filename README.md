@@ -19,6 +19,6 @@ So if you are playing version 1.4.4 this mod is essentialy just for the Slice of
 [![Pix](https://i.imgur.com/boVAYXr.png)](https://nubank.com.br/pagar/xldsq/rfgW3dODQh)
 
 # License
-Copyright (c) 2023 Edoan.
+Copyright (c) 2022 Edoan.
 
 This project is released under the MIT license.
