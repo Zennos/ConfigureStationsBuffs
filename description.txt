@@ -3,6 +3,9 @@
 Change duration of all vanilla stations to 2 hours!
 Duration of each station is configurable.
 
+[c/6f6fff:/v2.1.0]
+- now the mod overwrite the vanilla infinite durations.
+
 [c/6f6fff:/v2.0.0]
 - added support for Terraria 1.4.4.
 
