@@ -1,15 +1,15 @@
 [i:2999] [i:2177] [i:487] [i:3198] [i:3750]
 
-Change duration of all vanilla stations to 2 hours!
-Duration of each station is configurable.
+Allow you to disable infinite duration and change duration of all vanilla stations!
+Also there's a option to persist the buffs after death.
 
-[c/6f6fff:/v2.1.0]
-- now the mod overwrite the vanilla infinite durations.
+Note: changes will only apply to new buffs, the current buffs will not take effect.
+
+[c/6f6fff:/v3.0.0]
+- changed buff durations will not be infinite anymore.
+- added option to persist buffs after death.
 
 [c/6f6fff:/v2.0.0]
 - added support for Terraria 1.4.4.
-
-[c/FFFF00:Terraria 1.4.4 changes] 
-In 1.4.4 all stations (except Slice of Cake) has infinite duration. You can still use this mod to get extra duration for Slice of Cake.
 
 GitHub: [c/6f6fff:https://github.com/Zennos/LongerStationsBuffs]

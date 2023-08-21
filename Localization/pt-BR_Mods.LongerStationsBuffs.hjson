@@ -1,59 +1,31 @@
 Configs: {
-	OnlyOwner: Apenas o dono do servidor pode alterar essas configurações
-	InMinuteTooltip: Em minutos. Padrão: {0}
+	OnlyOwner: Apenas o dono do servidor pode mudar as configurações.
+	InMinuteTooltip:
+		'''
+			Defina a duração em minutos.
+			Duração pre v1.4.4: {0} minutos
+			Se você quiser que seja o tempo normal, defina como 0.
+		'''
+	Note: Obs: mudanças só vão ser aplicada em buffs novos, os que você tem atual não tera efeito.
 
 	LongerStationsBuffsConfig: {
-		DisplayName: Longer Stations Buffs Configurações
+		DisplayName: Opções
 
 		ModEnabled: {
-			Label: Mod Ativado
+			Label: Mod ativado
 			Tooltip: ""
 		}
 
-		BuffDuration: {
-			Label: Duração de todas as estantes de buff
+		persistAfterDeath: {
+			Label: Manter buff após a morte
 			Tooltip: ""
 		}
 
-		customBuffDuration: {
-			Label: Duração personalizada para cada estante
-			Tooltip: ""
-		}
-
-		// a.Tooltip: ""
-	}
-
-	CustomBuffsDurations: {
-		Tooltip: ""
-
-		enabled: {
-			Label: "{$GameUI.Enabled}"
-			Tooltip: ""
-		}
-
-		BewitchingTable: {
-			Label: "[i:2999] {$ItemName.BewitchingTable}"
-			Tooltip: ""
-		}
-
-		AmmoBox: {
-			Label: "[i:2177] {$ItemName.AmmoBox}"
-			Tooltip: ""
-		}
-
-		CrystalBall: {
-			Label: "[i:487] {$ItemName.CrystalBall}"
-			Tooltip: ""
-		}
-
-		SharpeningStation: {
-			Label: "[i:3198] {$ItemName.SharpeningStation}"
-			Tooltip: ""
-		}
-
-		SliceOfCake: {
-			Label: "[i:3750] {$ItemName.SliceOfCake}"
-			Tooltip: ""
-		}
+		BewitchingTable.Label: "[i:2999] {$ItemName.BewitchingTable} duração:"
+		AmmoBox.Label: "[i:2177] {$ItemName.AmmoBox} duração:"
+		CrystalBall.Label: "[i:487] {$ItemName.CrystalBall} duração:"
+		SharpeningStation.Label: "[i:3198] {$ItemName.SharpeningStation} duração:"
+		SliceOfCake.Label: "[i:3750] {$ItemName.SliceOfCake} duração:"
+		// Headers.Note: Note Header
 	}
 }

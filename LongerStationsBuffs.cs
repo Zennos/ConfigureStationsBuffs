@@ -8,7 +8,7 @@ namespace LongerStationsBuffs
 	public class LongerStationsBuffs : Mod
 	{
 
-		bool isInfiniteBuff = true;
+		bool isInfinite = true;
 
 		public override void Load()
 		{
@@ -26,63 +26,41 @@ namespace LongerStationsBuffs
 
             if (modConfig.ModEnabled)
 			{
-				if (this.isInfiniteBuff) SetInfiniteTimeFromBuffs(false);
-
-				bool changed = true;
-				if (modConfig.customBuffDuration.enabled)
-				{
-					switch (type)
-					{
-						case Terraria.ID.BuffID.AmmoBox:
-							timeToAdd = modConfig.customBuffDuration.AmmoBox;
-                            break;
-						case Terraria.ID.BuffID.Bewitched:
-							timeToAdd = modConfig.customBuffDuration.BewitchingTable;
-							break;
-						case Terraria.ID.BuffID.Clairvoyance:
-							timeToAdd = modConfig.customBuffDuration.CrystalBall;
-							break;
-						case Terraria.ID.BuffID.Sharpened:
-							timeToAdd = modConfig.customBuffDuration.SharpeningStation;
-							break;
-						case Terraria.ID.BuffID.SugarRush:
-							timeToAdd = modConfig.customBuffDuration.SliceOfCake;
-							break;
-						default:
-							changed = false;
-							break;
-					}
-
-                }
-				else
-				{
-					switch (type)
-					{
-						case Terraria.ID.BuffID.AmmoBox:
-						case Terraria.ID.BuffID.Bewitched:
-						case Terraria.ID.BuffID.Clairvoyance:
-						case Terraria.ID.BuffID.Sharpened:
-						case Terraria.ID.BuffID.SugarRush:
-							timeToAdd = modConfig.BuffDuration;
-							break;
-						default:
-							changed = false;
-							break;
-					}
-				}
-				if (changed)
-				{
-					timeToAdd = timeToAdd * 60 * 60;
-                }
-			} else if (!this.isInfiniteBuff)
-            {
-                SetInfiniteTimeFromBuffs(true);
-            }
+				CheckBuff(ref timeToAdd, type, BuffID.AmmoBox, modConfig.AmmoBox, modConfig.persistAfterDeath);
+				CheckBuff(ref timeToAdd, type, BuffID.Bewitched, modConfig.BewitchingTable, modConfig.persistAfterDeath);
+				CheckBuff(ref timeToAdd, type, BuffID.Clairvoyance, modConfig.CrystalBall, modConfig.persistAfterDeath);
+				CheckBuff(ref timeToAdd, type, BuffID.Sharpened, modConfig.SharpeningStation, modConfig.persistAfterDeath);
+				CheckBuff(ref timeToAdd, type, BuffID.SugarRush, modConfig.SliceOfCake, modConfig.persistAfterDeath);
+			} else if (isInfinite)
+			{
+				SetInfiniteTimeFromBuffs(true, false);
+			}
 
 			orig.Invoke(self, type, timeToAdd, quiet, foodHack);
 		}
 
-		public void SetInfiniteTimeFromBuffs(bool state)
+		public void CheckBuff(ref int timeToAdd, int buffId, int configBuffId, int newTimeInMin, bool persistAfterDeath = false)
+		{
+			if (buffId != configBuffId) return;
+			if (newTimeInMin > 0)
+			{
+				timeToAdd = newTimeInMin * 60 * 60;
+				ChangeInfiniteBuffState(buffId, false, persistAfterDeath);
+			}
+            else
+            {
+				ChangeInfiniteBuffState(buffId, buffId == BuffID.SugarRush ? false : true, persistAfterDeath);
+			}
+		}
+
+		public void ChangeInfiniteBuffState(int buffId, bool state, bool persistAfterDeath = false)
+		{
+            BuffID.Sets.TimeLeftDoesNotDecrease[buffId] = state;
+            Main.buffNoTimeDisplay[buffId] = state;
+            Main.persistentBuff[buffId] = persistAfterDeath;
+        }
+
+        public void SetInfiniteTimeFromBuffs(bool state, bool persistAfterDeath = false)
 		{
 			var buffIds = new [] { BuffID.AmmoBox, BuffID.Bewitched, BuffID.Clairvoyance, BuffID.Sharpened, BuffID.Clairvoyance };
 
@@ -91,10 +69,12 @@ namespace LongerStationsBuffs
 				var buffId = buffIds[i];
 				BuffID.Sets.TimeLeftDoesNotDecrease[buffId] = state;
 				Main.buffNoTimeDisplay[buffId] = state;
+                Main.persistentBuff[buffId] = persistAfterDeath;
             }
 
-			this.isInfiniteBuff = state;
-		}
+            this.isInfinite = state;
+
+        }
 
         public static bool IsPlayerLocalServerOwner(Player player)
 		{
