@@ -31,6 +31,7 @@ namespace LongerStationsBuffs
 				CheckBuff(ref timeToAdd, type, BuffID.Clairvoyance, modConfig.CrystalBall, modConfig.persistAfterDeath);
 				CheckBuff(ref timeToAdd, type, BuffID.Sharpened, modConfig.SharpeningStation, modConfig.persistAfterDeath);
 				CheckBuff(ref timeToAdd, type, BuffID.SugarRush, modConfig.SliceOfCake, modConfig.persistAfterDeath);
+				CheckBuff(ref timeToAdd, type, BuffID.WarTable, modConfig.WarTable, modConfig.persistAfterDeath);
 			} else if (isInfinite)
 			{
 				SetInfiniteTimeFromBuffs(true, false);

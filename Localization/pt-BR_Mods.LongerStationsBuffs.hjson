@@ -6,6 +6,12 @@ Configs: {
 			Duração pre v1.4.4: {0} minutos
 			Se você quiser que seja o tempo normal, defina como 0.
 		'''
+	InfiniteTooltip:
+		'''
+			Defina a duração em minutos.
+			Este buff sempre teve duração infinita desde de quando adicionado ao jogo.
+			Se você quiser que seja o tempo normal, defina como 0.
+		'''
 	Note: Obs: mudanças só vão ser aplicada em buffs novos, os que você tem atual não tera efeito.
 
 	LongerStationsBuffsConfig: {
@@ -26,6 +32,6 @@ Configs: {
 		CrystalBall.Label: "[i:487] {$ItemName.CrystalBall} duração:"
 		SharpeningStation.Label: "[i:3198] {$ItemName.SharpeningStation} duração:"
 		SliceOfCake.Label: "[i:3750] {$ItemName.SliceOfCake} duração:"
-		// Headers.Note: Note Header
+		WarTable.Label: "[i:3814] {$ItemName.WarTable} duração:"
 	}
 }

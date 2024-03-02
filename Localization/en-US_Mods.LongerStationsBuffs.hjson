@@ -6,6 +6,12 @@ Configs: {
 			Pre v1.4.4 duration: {0} minutes
 			If you don't want to change the default behaviour, set it to 0.
 		'''
+	InfiniteTooltip:
+		'''
+			Set the duration in minutes.
+			The buff always had infinite duration since introduced to the game.
+			If you don't want to change the default behaviour, set it to 0.
+		'''
 	Note: Note: changes only apply to new buffs, it will not change your current buffs.
 
 	LongerStationsBuffsConfig: {
@@ -26,6 +32,6 @@ Configs: {
 		CrystalBall.Label: "[i:487] {$ItemName.CrystalBall} duration:"
 		SharpeningStation.Label: "[i:3198] {$ItemName.SharpeningStation} duration:"
 		SliceOfCake.Label: "[i:3750] {$ItemName.SliceOfCake} duration:"
-		Headers.Note: Note Header
+		WarTable.Label: "[i:3814] {$ItemName.WarTable} duration:"
 	}
 }

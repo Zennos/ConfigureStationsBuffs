@@ -14,37 +14,44 @@ namespace LongerStationsBuffs
 		[DefaultValue(false)]
         public bool persistAfterDeath;
 
-        const string InterpolatedTooltip = "$Mods.LongerStationsBuffs.Configs.InMinuteTooltip";
+        const string InMinuteTooltip = "$Mods.LongerStationsBuffs.Configs.InMinuteTooltip";
 
-        [TooltipKey(InterpolatedTooltip)]
+        const string InfiniteTooltip = "$Mods.LongerStationsBuffs.Configs.InfiniteTooltip";
+
+        [TooltipKey(InMinuteTooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int BewitchingTable;
 
-        [TooltipKey(InterpolatedTooltip)]
+        [TooltipKey(InMinuteTooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int AmmoBox;
 
-        [TooltipKey(InterpolatedTooltip)]
+        [TooltipKey(InMinuteTooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int CrystalBall;
 
-        [TooltipKey(InterpolatedTooltip)]
+        [TooltipKey(InMinuteTooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int SharpeningStation;
 
-        [TooltipKey(InterpolatedTooltip)]
+        [TooltipKey(InMinuteTooltip)]
         [TooltipArgs(2)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int SliceOfCake;
+
+        [TooltipKey(InfiniteTooltip)]
+        [Range(0, 59940)]
+        [DefaultValue(0)]
+        public int WarTable;
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
