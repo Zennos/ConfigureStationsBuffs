@@ -1,6 +1,6 @@
 ﻿<img align="right" width="148px" src="https://github.com/Zennos/LongerStationsBuffs/blob/master/icon.png?raw=true">
 
-# Longer Stations Buff
+# Configure Stations Buffs
 Allow you to disable infinite duration and change duration of all vanilla stations!
 Also there's a option to persist the buffs after death.
 
