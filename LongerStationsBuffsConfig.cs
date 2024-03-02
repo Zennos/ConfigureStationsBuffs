@@ -48,12 +48,12 @@ namespace LongerStationsBuffs
 
         public override ConfigScope Mode => ConfigScope.ServerSide;
 
-		public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref string message)
+		public override bool AcceptClientChanges(ModConfig pendingConfig, int whoAmI, ref NetworkText message)
 		{
 			if (!LongerStationsBuffs.IsPlayerLocalServerOwner(Main.player[whoAmI]))
 			{
-				message = Language.GetTextValue("Mods.LongerStationsBuffs.Configs.OnlyOwner");
-				return false;
+                message = NetworkText.FromLiteral(Language.GetTextValue("Mods.LongerStationsBuffs.Configs.OnlyOwner"));
+                return false;
 			}
 			return base.AcceptClientChanges(pendingConfig, whoAmI, ref message);
 		}
