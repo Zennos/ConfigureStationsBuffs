@@ -1,9 +1,15 @@
 Configs: {
 	OnlyOwner: Apenas o dono do servidor pode mudar as configurações.
+	Pre144Tooltip:
+		'''
+			Defina a duração em minutos.
+			Duração pre v1.4.4: {0} minutos.
+			Se você quiser que seja o tempo normal, defina como 0.
+		'''
 	InMinuteTooltip:
 		'''
 			Defina a duração em minutos.
-			Duração pre v1.4.4: {0} minutos
+			Duração padrão: {0} minutos.
 			Se você quiser que seja o tempo normal, defina como 0.
 		'''
 	InfiniteTooltip:

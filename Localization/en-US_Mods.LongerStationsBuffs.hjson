@@ -1,9 +1,15 @@
 Configs: {
 	OnlyOwner: Only the server owner can change this config.
+	Pre144Tooltip:
+		'''
+			Set the duration in minutes.
+			Pre v1.4.4 duration: {0} minutes.
+			If you don't want to change the default behaviour, set it to 0.
+		'''
 	InMinuteTooltip:
 		'''
 			Set the duration in minutes.
-			Pre v1.4.4 duration: {0} minutes
+			Default duration: {0} minutes.
 			If you don't want to change the default behaviour, set it to 0.
 		'''
 	InfiniteTooltip:

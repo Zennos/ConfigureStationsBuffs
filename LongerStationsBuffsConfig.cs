@@ -14,29 +14,31 @@ namespace LongerStationsBuffs
 		[DefaultValue(false)]
         public bool persistAfterDeath;
 
+        const string Pre144Tooltip = "$Mods.LongerStationsBuffs.Configs.Pre144Tooltip";
+
         const string InMinuteTooltip = "$Mods.LongerStationsBuffs.Configs.InMinuteTooltip";
 
         const string InfiniteTooltip = "$Mods.LongerStationsBuffs.Configs.InfiniteTooltip";
 
-        [TooltipKey(InMinuteTooltip)]
+        [TooltipKey(Pre144Tooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int BewitchingTable;
 
-        [TooltipKey(InMinuteTooltip)]
+        [TooltipKey(Pre144Tooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int AmmoBox;
 
-        [TooltipKey(InMinuteTooltip)]
+        [TooltipKey(Pre144Tooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
         public int CrystalBall;
 
-        [TooltipKey(InMinuteTooltip)]
+        [TooltipKey(Pre144Tooltip)]
         [TooltipArgs(10)]
         [Range(0, 59940)]
         [DefaultValue(0)]
