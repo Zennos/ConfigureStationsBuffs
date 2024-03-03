@@ -41,8 +41,6 @@ namespace LongerStationsBuffs
 
         private void Player_AddBuff(Terraria.On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
 		{
-            Logger.Info($"Player Add Buff. who:{self.whoAmI} type:{type} time:{timeToAdd} q:{quiet} fh:{foodHack}");
-
             LongerStationsBuffsConfig modConfig = ModContent.GetInstance<LongerStationsBuffsConfig>();
 
 			if (!modConfig.ModEnabled)
