@@ -18,7 +18,7 @@ Configs: {
 			Este buff sempre teve duração infinita desde de quando adicionado ao jogo.
 			Se você quiser que seja o tempo normal, defina como 0.
 		'''
-	Note: Obs: mudanças só vão ser aplicada em buffs novos, os que você tem atual não tera efeito.
+	Note: Obs: mudanças só vão ser aplicada em buffs novos, os que você tem atual não tera efeito, reuse a estação para aplicar mudanças.
 
 	LongerStationsBuffsConfig: {
 		DisplayName: Opções

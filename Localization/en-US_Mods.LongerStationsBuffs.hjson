@@ -18,7 +18,7 @@ Configs: {
 			The buff always had infinite duration since introduced to the game.
 			If you don't want to change the default behaviour, set it to 0.
 		'''
-	Note: Note: changes only apply to new buffs, it will not change your current buffs.
+	Note: Note: changes only apply to new buffs, it will not change your current buffs, reuse the station to apply the effects.
 
 	LongerStationsBuffsConfig: {
 		DisplayName: Settings
