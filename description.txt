@@ -6,8 +6,8 @@ Also there's a option to persist the buffs after death.
 Note: changes will only apply to new buffs, the current buffs will not take effect, reuse the station to apply the effects.
 
 [c/6f6fff:/v4.0.0]
-- add war table.
-- fix some buffs not returning to default behaviour when disabling or unloading the mod.
+- added war table.
+- fixed some buffs not returning to default behaviour when disabling or unloading the mod.
 
 [c/6f6fff:/v3.0.0]
 - changed buff durations will not be infinite anymore.
