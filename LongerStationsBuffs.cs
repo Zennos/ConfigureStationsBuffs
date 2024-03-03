@@ -1,14 +1,19 @@
+using log4net.Repository.Hierarchy;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.Config;
 
 namespace LongerStationsBuffs
 {
 	public class LongerStationsBuffs : Mod
 	{
 
-		bool isInfinite = true;
+		bool anyBuffChanged = false;
 
 		public override void Load()
 		{
@@ -17,64 +22,84 @@ namespace LongerStationsBuffs
 
         public override void Unload()
         {
-			SetInfiniteTimeFromBuffs(false);
+			if (!anyBuffChanged) return;
+			ChangeAllBuffsToDefault();
+        }
+
+		public void ChangeAllBuffsToDefault()
+		{
+			ChangeBuff(BuffID.Bewitched, true, false);
+			ChangeBuff(BuffID.AmmoBox, true, false);
+			ChangeBuff(BuffID.Clairvoyance, true, false);
+			ChangeBuff(BuffID.Sharpened, true, false);
+			ChangeBuff(BuffID.SugarRush, false, false);
+			ChangeBuff(BuffID.AmmoBox, true, false);
+			ChangeBuff(BuffID.WarTable, true, false);
+
+            anyBuffChanged = false;
         }
 
         private void Player_AddBuff(Terraria.On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
 		{
-			LongerStationsBuffsConfig modConfig = ModContent.GetInstance<LongerStationsBuffsConfig>();
+            Logger.Info($"Player Add Buff. who:{self.whoAmI} type:{type} time:{timeToAdd} q:{quiet} fh:{foodHack}");
 
-            if (modConfig.ModEnabled)
+            LongerStationsBuffsConfig modConfig = ModContent.GetInstance<LongerStationsBuffsConfig>();
+
+			if (!modConfig.ModEnabled)
 			{
-				CheckBuff(ref timeToAdd, type, BuffID.AmmoBox, modConfig.AmmoBox, modConfig.persistAfterDeath);
-				CheckBuff(ref timeToAdd, type, BuffID.Bewitched, modConfig.BewitchingTable, modConfig.persistAfterDeath);
-				CheckBuff(ref timeToAdd, type, BuffID.Clairvoyance, modConfig.CrystalBall, modConfig.persistAfterDeath);
-				CheckBuff(ref timeToAdd, type, BuffID.Sharpened, modConfig.SharpeningStation, modConfig.persistAfterDeath);
-				CheckBuff(ref timeToAdd, type, BuffID.SugarRush, modConfig.SliceOfCake, modConfig.persistAfterDeath);
-				CheckBuff(ref timeToAdd, type, BuffID.WarTable, modConfig.WarTable, modConfig.persistAfterDeath);
-			} else if (isInfinite)
-			{
-				SetInfiniteTimeFromBuffs(true, false);
+				if (anyBuffChanged) ChangeAllBuffsToDefault();
+
+                orig.Invoke(self, type, timeToAdd, quiet, foodHack);
+                return;
 			}
 
-			orig.Invoke(self, type, timeToAdd, quiet, foodHack);
-		}
+			int newTime = 0;
 
-		public void CheckBuff(ref int timeToAdd, int buffId, int configBuffId, int newTimeInMin, bool persistAfterDeath = false)
-		{
-			if (buffId != configBuffId) return;
-			if (newTimeInMin > 0)
-			{
-				timeToAdd = newTimeInMin * 60 * 60;
-				ChangeInfiniteBuffState(buffId, false, persistAfterDeath);
-			}
-            else
+            switch (type)
             {
-				ChangeInfiniteBuffState(buffId, buffId == BuffID.SugarRush ? false : true, persistAfterDeath);
+                case BuffID.Bewitched:
+                    ChangeBuff(type, infinite: modConfig.BewitchingTable == 0, modConfig.persistAfterDeath);
+                    newTime = modConfig.BewitchingTable * 60 * 60;
+                    break;
+                case BuffID.AmmoBox:
+					ChangeBuff(type, infinite: modConfig.AmmoBox == 0, modConfig.persistAfterDeath);
+					newTime = modConfig.AmmoBox * 60 * 60;
+                    break;
+                case BuffID.Clairvoyance:
+                    ChangeBuff(type, infinite: modConfig.CrystalBall == 0, modConfig.persistAfterDeath);
+                    newTime = modConfig.CrystalBall * 60 * 60;
+                    break;
+                case BuffID.Sharpened:
+                    ChangeBuff(type, infinite: modConfig.SharpeningStation == 0, modConfig.persistAfterDeath);
+                    newTime = modConfig.SharpeningStation * 60 * 60;
+                    break;
+                case BuffID.SugarRush:
+                    ChangeBuff(type, infinite: modConfig.SliceOfCake == 0, modConfig.persistAfterDeath);
+                    newTime = modConfig.SliceOfCake * 60 * 60;
+                    break;
+                case BuffID.WarTable:
+                    ChangeBuff(type, infinite: modConfig.WarTable == 0, modConfig.persistAfterDeath);
+                    newTime = modConfig.WarTable * 60 * 60;
+                    break;
+                default:
+                    break;
 			}
+
+			if (newTime > 0) {
+				anyBuffChanged = true; 
+				timeToAdd = newTime; 
+			}
+
+            orig.Invoke(self, type, timeToAdd, quiet, foodHack);
 		}
 
-		public void ChangeInfiniteBuffState(int buffId, bool state, bool persistAfterDeath = false)
+		public void ChangeBuff(int buffId, bool infinite, bool persistAfterDeath)
 		{
-            BuffID.Sets.TimeLeftDoesNotDecrease[buffId] = state;
-            Main.buffNoTimeDisplay[buffId] = state;
+            BuffID.Sets.TimeLeftDoesNotDecrease[buffId] = infinite;
+            Main.buffNoTimeDisplay[buffId] = infinite;
             Main.persistentBuff[buffId] = persistAfterDeath;
-        }
 
-        public void SetInfiniteTimeFromBuffs(bool state, bool persistAfterDeath = false)
-		{
-			var buffIds = new [] { BuffID.AmmoBox, BuffID.Bewitched, BuffID.Clairvoyance, BuffID.Sharpened, BuffID.Clairvoyance };
-
-			for (int i = 0; i < buffIds.Length; i++)
-			{
-				var buffId = buffIds[i];
-				BuffID.Sets.TimeLeftDoesNotDecrease[buffId] = state;
-				Main.buffNoTimeDisplay[buffId] = state;
-                Main.persistentBuff[buffId] = persistAfterDeath;
-            }
-
-            this.isInfinite = state;
-
+			anyBuffChanged = true;
         }
 
         public static bool IsPlayerLocalServerOwner(Player player)
