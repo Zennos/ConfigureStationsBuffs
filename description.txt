@@ -1,4 +1,4 @@
-[i:2999] [i:2177] [i:487] [i:3198] [i:3750]
+[i:2999] [i:2177] [i:487] [i:3198] [i:3750] [i:3814]
 
 Allow you to disable infinite duration and change duration of all vanilla stations!
 Also there's a option to persist the buffs after death.
